@@ -1,6 +1,6 @@
-# GridWise
+# NoteToGrid
 
-[![Tests](https://github.com/AayatHossain/gridwise-llm/actions/workflows/tests.yml/badge.svg)](https://github.com/AayatHossain/gridwise-llm/actions/workflows/tests.yml)
+[![Tests](https://github.com/AayatHossain/note-to-grid/actions/workflows/tests.yml/badge.svg)](https://github.com/AayatHossain/note-to-grid/actions/workflows/tests.yml)
 
 **An API that reads plain-English notes from a campus energy operator, turns them into rules with an LLM, checks every rule in code, and returns the cheapest valid 24-hour plan for the campus battery and grid.**
 
@@ -185,8 +185,8 @@ tests/             35 offline tests
 Python 3.11 or newer and an OpenAI API key.
 
 ```bash
-git clone https://github.com/AayatHossain/gridwise-llm.git
-cd gridwise-llm
+git clone https://github.com/AayatHossain/note-to-grid.git
+cd note-to-grid
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
@@ -203,8 +203,8 @@ curl -X POST http://localhost:8000/optimize-energy -H "Content-Type: application
 With Docker instead:
 
 ```bash
-docker build -t gridwise .
-docker run --rm -p 8000:8000 -e OPENAI_API_KEY=sk-... gridwise
+docker build -t notetogrid .
+docker run --rm -p 8000:8000 -e OPENAI_API_KEY=sk-... notetogrid
 ```
 
 <details>

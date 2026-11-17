@@ -1,6 +1,6 @@
-# GridWise LLM energy optimizer.
-# Build:  docker build -t gridwise-llm .
-# Run:    docker run --rm -p 8000:8000 -e OPENAI_API_KEY=... gridwise-llm
+# NoteToGrid energy scheduling service.
+# Build:  docker build -t notetogrid .
+# Run:    docker run --rm -p 8000:8000 -e OPENAI_API_KEY=... notetogrid
 # No secrets are baked in; everything comes from environment variables at run time.
 FROM python:3.12-slim
 
@@ -18,8 +18,8 @@ COPY app ./app
 COPY scripts ./scripts
 COPY data ./data
 
-RUN useradd --create-home --uid 10001 gridwise && chown -R gridwise:gridwise /app
-USER gridwise
+RUN useradd --create-home --uid 10001 app && chown -R app:app /app
+USER app
 
 EXPOSE 8000
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Evaluate a running GridWise service on the example cases with the real language model.
+"""Evaluate a running NoteToGrid service on the example cases with the real language model.
 
     python scripts/evaluate.py --base-url http://localhost:8000
     python scripts/evaluate.py --only EXAMPLE-06

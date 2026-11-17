@@ -1,4 +1,4 @@
-"""GridWise LLM-assisted energy optimizer - HTTP API.
+"""NoteToGrid - HTTP API.
 
     GET  /health            -> {"status": "ok"}
     POST /optimize-energy   -> directive interpretation + optimal 24-hour plan
@@ -26,10 +26,10 @@ from .validator import validate_plan
 
 settings = load_settings()
 logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-log = logging.getLogger("gridwise.api")
+log = logging.getLogger("notetogrid.api")
 
 app = FastAPI(
-    title="GridWise LLM Energy Optimizer",
+    title="NoteToGrid",
     version="1.0.0",
     description="Turns operator notes into constraints with an LLM, checks them with deterministic guardrails, and returns the cheapest valid 24-hour battery and grid schedule.",
     docs_url="/docs",

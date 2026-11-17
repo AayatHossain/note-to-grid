@@ -1,1 +1,1 @@
-"""GridWise LLM-assisted energy optimizer service."""
+"""NoteToGrid: LLM-assisted battery and grid scheduling service."""

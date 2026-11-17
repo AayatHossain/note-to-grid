@@ -29,11 +29,11 @@ from .directives import Directive, no_op
 from .guardrails import validate_llm_output
 from .schemas import Battery
 
-log = logging.getLogger("gridwise.llm")
+log = logging.getLogger("notetogrid.llm")
 
 MIN_ATTEMPT_SECONDS = 3.0
 
-SYSTEM_PROMPT = """You are the operator-note interpreter inside GridWise, a campus energy scheduling service.
+SYSTEM_PROMPT = """You are the operator-note interpreter inside NoteToGrid, a campus energy scheduling service.
 The scheduler already has the next 24 hours of demand, solar forecast and grid tariff (hours 0-23).
 Campus operators add short natural-language notes. Your only job is to convert EACH note into exactly one
 structured directive, or no_op when the note does not change this 24-hour energy schedule.
