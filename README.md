@@ -86,16 +86,17 @@ All of this is covered by 35 automated tests that run without an API key.
 ## How it works
 
 ```mermaid
-flowchart LR
-    R["Request<br/>notes + 24 h data + battery"] --> V["Check request<br/>400 / 422 on bad input"]
-    V --> L["LLM<br/>notes to rules"]
-    L --> G["Guardrails<br/>check every rule"]
-    G -- "rejected" --> L
-    G --> C["Constraint builder<br/>rules to hourly limits"]
-    C --> O["LP optimizer<br/>cheapest plan"]
-    O --> P["Plan builder<br/>rounding, totals"]
-    P --> F["Final validator<br/>replay every hour"]
-    F --> S["Response"]
+flowchart TB
+    subgraph A ["1 · Read the notes"]
+        direction LR
+        R["Request<br/>notes + 24 h data"] --> V["Check request<br/>reject bad input"] --> L["LLM<br/>notes to rules"] --> G["Guardrails<br/>check every rule"]
+        G -. "rejected: retry once" .-> L
+    end
+    subgraph B ["2 · Build the plan"]
+        direction LR
+        C["Constraint builder<br/>rules to hourly limits"] --> O["LP optimizer<br/>cheapest plan"] --> F["Final check<br/>replay every hour"] --> S["Response<br/>rules + plan"]
+    end
+    A --> B
 ```
 
 ### The six rule types
